@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShopEase — Your one-stop destination for quality electronics, fashion, accessories and home products. Shop now for the best deals!">
+  <title>ShopEase — Everything You Need, All in One Place</title>
+  <!-- Anti-flicker theme script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('shopease_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="brand-icon">🛒</span>
+        <span>ShopEase</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item active">🏠 Home</a>
+        <a href="products.html" class="nav-item">📦 Products</a>
+        <a href="cart.html" class="nav-item cart-link">
+          🛒 Cart
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <div class="nav-auth" id="nav-auth">
+          <a href="login.html" class="nav-signin-btn" id="nav-signin-btn">
+            <span>👤</span>
+            <span>Sign In</span>
+          </a>
+        </div>
+      </div>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== HERO SECTION ====== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-badge">✨ Welcome to ShopEase</div>
+          <h1>Everything You Need, All in One Place</h1>
+          <p>Discover a curated collection of quality electronics, fashion, accessories, and home products — all at amazing prices with fast delivery.</p>
+          <div class="hero-buttons">
+            <a href="products.html" class="btn btn-primary btn-lg">🛍️ Shop Now</a>
+            <a href="#top-categories" class="btn btn-secondary btn-lg">Explore Categories</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-bags-illustration">
+            <svg viewBox="0 0 380 340" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-bags-svg">
+              <defs>
+                <linearGradient id="orangeBagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fbbf24" />
+                  <stop offset="40%" stop-color="#f59e0b" />
+                  <stop offset="100%" stop-color="#d97706" />
+                </linearGradient>
+                <linearGradient id="blueBagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#60a5fa" />
+                  <stop offset="35%" stop-color="#38bdf8" />
+                  <stop offset="80%" stop-color="#0284c7" />
+                  <stop offset="100%" stop-color="#0369a1" />
+                </linearGradient>
+                <filter id="bagShadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000000" flood-opacity="0.22" />
+                </filter>
+              </defs>
+
+              <!-- REAR YELLOW/ORANGE BAG -->
+              <g class="rear-bag" filter="url(#bagShadow)">
+                <path d="M225 150 C225 80, 295 80, 295 150" stroke="#b45309" stroke-width="12" stroke-linecap="round" fill="none" />
+                <rect x="180" y="140" width="135" height="145" rx="16" fill="url(#orangeBagGrad)" />
+                <path d="M220 155 C220 195, 290 195, 290 155" stroke="#ea580c" stroke-width="10" stroke-linecap="round" fill="none" />
+              </g>
+
+              <!-- FRONT CYAN/BLUE BAG -->
+              <g class="front-bag" filter="url(#bagShadow)">
+                <path d="M105 115 C105 38, 195 38, 195 115" stroke="#0369a1" stroke-width="14" stroke-linecap="round" fill="none" />
+                <rect x="70" y="105" width="165" height="185" rx="20" fill="url(#blueBagGrad)" />
+                <!-- 3D Embossed Stripes -->
+                <rect x="70" y="152" width="165" height="16" fill="#93c5fd" fill-opacity="0.4" />
+                <rect x="70" y="192" width="165" height="16" fill="#93c5fd" fill-opacity="0.4" />
+                <rect x="70" y="232" width="165" height="16" fill="#075985" fill-opacity="0.3" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TOP CATEGORY CARDS (REFERENCE STYLE) ====== -->
+  <section class="top-categories-section" id="top-categories">
+    <div class="container">
+      <div class="top-categories-grid">
+        <!-- DRESS & FROCK -->
+        <a href="products.html?category=DRESS+%26+FROCK" class="top-cat-card" data-category="DRESS & FROCK">
+          <div class="top-cat-icon-box">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26 12C26 15.3 28.7 18 32 18C35.3 18 38 15.3 38 12L42 16L40 26C38 27 34 28 32 28C30 28 26 27 24 26L22 16L26 12Z" fill="#10B981" />
+              <path d="M24 26L14 52C14 52 22 56 32 56C42 56 50 52 50 52L40 26C38 27 34 28 32 28C30 28 26 27 24 26Z" fill="#34D399" />
+              <path d="M28 26H36V29H28V26Z" fill="#059669" />
+            </svg>
+          </div>
+          <div class="top-cat-details">
+            <div class="top-cat-title-row">
+              <h4 class="top-cat-title">DRESS &amp; FROCK</h4>
+              <span class="top-cat-count" id="count-dress-frock">(0)</span>
+            </div>
+            <span class="top-cat-link">Show All</span>
+          </div>
+        </a>
+
+        <!-- WINTER WEAR -->
+        <a href="products.html?category=WINTER+WEAR" class="top-cat-card" data-category="WINTER WEAR">
+          <div class="top-cat-icon-box">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 14L14 24L20 30L24 26V52H40V26L44 30L50 24L40 14H24Z" fill="#60A5FA" />
+              <path d="M24 14H40L36 28L32 18L28 28L24 14Z" fill="#93C5FD" />
+              <line x1="32" y1="28" x2="32" y2="52" stroke="#1E40AF" stroke-width="2" stroke-dasharray="2 2" />
+              <circle cx="28" cy="34" r="1.5" fill="#1E40AF" />
+              <circle cx="28" cy="42" r="1.5" fill="#1E40AF" />
+            </svg>
+          </div>
+          <div class="top-cat-details">
+            <div class="top-cat-title-row">
+              <h4 class="top-cat-title">WINTER WEAR</h4>
+              <span class="top-cat-count" id="count-winter-wear">(0)</span>
+            </div>
+            <span class="top-cat-link">Show All</span>
+          </div>
+        </a>
+
+        <!-- GLASSES & LENS -->
+        <a href="products.html?category=GLASSES+%26+LENS" class="top-cat-card" data-category="GLASSES & LENS">
+          <div class="top-cat-icon-box">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="22" cy="32" r="10" fill="#334155" />
+              <circle cx="42" cy="32" r="10" fill="#334155" />
+              <path d="M31 30C31 28 33 28 33 30" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+              <path d="M12 30L6 28" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+              <path d="M52 30L58 28" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="top-cat-details">
+            <div class="top-cat-title-row">
+              <h4 class="top-cat-title">GLASSES &amp; LENS</h4>
+              <span class="top-cat-count" id="count-glasses-lens">(0)</span>
+            </div>
+            <span class="top-cat-link">Show All</span>
+          </div>
+        </a>
+
+        <!-- SHORTS & JEANS -->
+        <a href="products.html?category=SHORTS+%26+JEANS" class="top-cat-card" data-category="SHORTS & JEANS">
+          <div class="top-cat-icon-box">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 14H46L44 48L34 48L32 28L30 48L20 48L18 14Z" fill="#3B82F6" />
+              <path d="M18 14H46V20H18V14Z" fill="#2563EB" />
+              <line x1="32" y1="20" x2="32" y2="28" stroke="#1D4ED8" stroke-width="2" />
+              <circle cx="32" cy="17" r="1.5" fill="#FBBF24" />
+            </svg>
+          </div>
+          <div class="top-cat-details">
+            <div class="top-cat-title-row">
+              <h4 class="top-cat-title">SHORTS &amp; JEANS</h4>
+              <span class="top-cat-count" id="count-shorts-jeans">(0)</span>
+            </div>
+            <span class="top-cat-link">Show All</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== MAIN SHOWCASE (2-COLUMN: SIDEBAR + 3-COLUMN PRODUCTS) ====== -->
+  <section class="main-showcase-section" id="showcase">
+    <div class="container">
+      <div class="main-showcase-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="showcase-sidebar">
+          <!-- CATEGORY ACCORDION PANEL -->
+          <div class="sidebar-box category-panel">
+            <h3 class="sidebar-box-title">CATEGORY</h3>
+            <ul class="sidebar-cat-list" id="sidebar-cat-list">
+              <!-- Clothes -->
+              <li class="sidebar-cat-item">
+                <button type="button" class="sidebar-cat-btn" aria-label="Toggle Clothes category">
+                  <span class="cat-btn-left">
+                    <span class="cat-icon-svg">👗</span>
+                    <span class="cat-name">Clothes</span>
+                  </span>
+                  <span class="cat-plus">+</span>
+                </button>
+                <div class="sidebar-subcat-menu">
+                  <a href="products.html?category=Fashion&search=shirt" class="subcat-link"><span>Shirt</span> <span>300</span></a>
+                  <a href="products.html?category=Fashion&search=jeans" class="subcat-link"><span>Shorts &amp; Jeans</span> <span>60</span></a>
+                  <a href="products.html?category=Fashion&search=jacket" class="subcat-link"><span>Jacket</span> <span>50</span></a>
+                  <a href="products.html?category=Fashion&search=dress" class="subcat-link"><span>Dress &amp; Frock</span> <span>87</span></a>
+                </div>
+              </li>
+
+              <!-- Footwear -->
+              <li class="sidebar-cat-item">
+                <button type="button" class="sidebar-cat-btn" aria-label="Toggle Footwear category">
+                  <span class="cat-btn-left">
+                    <span class="cat-icon-svg">👟</span>
+                    <span class="cat-name">Footwear</span>
+                  </span>
+                  <span class="cat-plus">+</span>
+                </button>
+                <div class="sidebar-subcat-menu">
+                  <a href="products.html?category=Fashion&search=sports" class="subcat-link"><span>Sports</span> <span>45</span></a>
+                  <a href="products.html?category=Fashion&search=shoes" class="subcat-link"><span>Formal</span> <span>75</span></a>
+                  <a href="products.html?category=Fashion&search=casual" class="subcat-link"><span>Casual</span> <span>35</span></a>
+                  <a href="products.html?category=Fashion&search=boots" class="subcat-link"><span>Safety Shoes</span> <span>26</span></a>
+                </div>
+              </li>
+
+              <!-- Jewelry -->
+              <li class="sidebar-cat-item">
+                <button type="button" class="sidebar-cat-btn" aria-label="Toggle Jewelry category">
+                  <span class="cat-btn-left">
+                    <span class="cat-icon-svg">💍</span>
+                    <span class="cat-name">Jewelry</span>
+                  </span>
+                  <span class="cat-plus">+</span>
+                </button>
+                <div class="sidebar-subcat-menu">
+                  <a href="products.html?category=Accessories&search=earrings" class="subcat-link"><span>Earrings</span> <span>46</span></a>
+                  <a href="products.html?category=Accessories&search=couple" class="subcat-link"><span>Couple Rings</span> <span>73</span></a>
+                  <a href="products.html?category=Accessories&search=necklace" class="subcat-link"><span>Necklace</span> <span>61</span></a>
+                </div>
+              </li>
+
+              <!-- Perfume -->
+              <li class="sidebar-cat-item">
+                <button type="button" class="sidebar-cat-btn" aria-label="Toggle Perfume category">
+                  <span class="cat-btn-left">
+                    <span class="cat-icon-svg">🧴</span>
+                    <span class="cat-name">Perfume</span>
+                  </span>
+                  <span class="cat-plus">+</span>
+                </button>
+                <div class="sidebar-subcat-menu">
+                  <a href="products.html?category=Accessories&search=perfume" class="subcat-link"><span>Clothes Perfume</span> <span>12</span></a>
+                  <a href="products.html?category=Accessories&search=deodorant" class="subcat-link"><span>Deodorant</span> <span>60</span></a>
+                  <a href="products.html?category=Accessories&search=fragrance" class="subcat-link"><span>Flower Fragrance</span> <span>40</span></a>
+                </div>
+              </li>
+
+              <!-- Cosmetics -->
+              <li class="sidebar-cat-item">
+                <button type="button" class="sidebar-cat-btn" aria-label="Toggle Cosmetics category">
+                  <span class="cat-btn-left">
+                    <span class="cat-icon-svg">💄</span>
+                    <span class="cat-name">Cosmetics</span>
+                  </span>
+                  <span class="cat-plus">+</span>
+                </button>
+                <div class="sidebar-subcat-menu">
+                  <a href="products.html?category=Accessories&search=shampoo" class="subcat-link"><span>Shampoo</span> <span>19</span></a>
+                  <a href="products.html?category=Accessories&search=sunscreen" class="subcat-link"><span>Sunscreen</span> <span>23</span></a>
+                  <a href="products.html?category=Accessories&search=makeup" class="subcat-link"><span>Makeup Kit</span> <span>84</span></a>
+                </div>
+              </li>
+
+              <!-- Glasses -->
+              <li class="sidebar-cat-item">
+                <button type="button" class="sidebar-cat-btn" aria-label="Toggle Glasses category">
+                  <span class="cat-btn-left">
+                    <span class="cat-icon-svg">👓</span>
+                    <span class="cat-name">Glasses</span>
+                  </span>
+                  <span class="cat-plus">+</span>
+                </button>
+                <div class="sidebar-subcat-menu">
+                  <a href="products.html?category=Accessories&search=sunglasses" class="subcat-link"><span>Sunglasses</span> <span>50</span></a>
+                  <a href="products.html?category=Accessories&search=lens" class="subcat-link"><span>Lens</span> <span>48</span></a>
+                </div>
+              </li>
+
+              <!-- Bags -->
+              <li class="sidebar-cat-item">
+                <button type="button" class="sidebar-cat-btn" aria-label="Toggle Bags category">
+                  <span class="cat-btn-left">
+                    <span class="cat-icon-svg">👜</span>
+                    <span class="cat-name">Bags</span>
+                  </span>
+                  <span class="cat-plus">+</span>
+                </button>
+                <div class="sidebar-subcat-menu">
+                  <a href="products.html?category=Accessories&search=shopping" class="subcat-link"><span>Shopping Bag</span> <span>62</span></a>
+                  <a href="products.html?category=Accessories&search=gym" class="subcat-link"><span>Gym Backpack</span> <span>35</span></a>
+                  <a href="products.html?category=Accessories&search=purse" class="subcat-link"><span>Purse</span> <span>80</span></a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- BEST SELLERS PANEL -->
+          <div class="sidebar-box bestsellers-panel">
+            <h3 class="sidebar-box-title">BEST SELLERS</h3>
+            <div class="bestsellers-list">
+              <!-- Item 1: Baby Fabric Shoes -->
+              <div class="bestseller-item">
+                <div class="bestseller-img-box">
+                  <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=200&h=200&fit=crop" alt="Baby Fabric Shoes" class="bestseller-img" loading="lazy">
+                </div>
+                <div class="bestseller-info">
+                  <h4 class="bestseller-title">Baby Fabric Shoes</h4>
+                  <div class="bestseller-rating">
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <div class="bestseller-price-row">
+                    <span class="current-price">$4.00</span>
+                    <del class="old-price">$5.00</del>
+                  </div>
+                  <div class="bestseller-actions">
+                    <a href="product-details.html?id=bestseller_baby_fabric_shoes&name=Baby%20Fabric%20Shoes&price=4.00&category=Footwear&image=https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                    <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleBestSellerClick('Baby Fabric Shoes', 4.00, 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 2: Men's Hoodies T-Shirt -->
+              <div class="bestseller-item">
+                <div class="bestseller-img-box">
+                  <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=200&h=200&fit=crop" alt="Men's Hoodies T-Shirt" class="bestseller-img" loading="lazy">
+                </div>
+                <div class="bestseller-info">
+                  <h4 class="bestseller-title">Men's Hoodies T-Shirt</h4>
+                  <div class="bestseller-rating">
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <div class="bestseller-price-row">
+                    <span class="current-price">$14.00</span>
+                    <del class="old-price">$18.00</del>
+                  </div>
+                  <div class="bestseller-actions">
+                    <a href="product-details.html?id=bestseller_mens_hoodies_tshirt&name=Men%27s%20Hoodies%20T-Shirt&price=14.00&category=Clothes&image=https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                    <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleBestSellerClick('Men\'s Hoodies T-Shirt', 14.00, 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 3: Girls Casual Top -->
+              <div class="bestseller-item">
+                <div class="bestseller-img-box">
+                  <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=200&h=200&fit=crop" alt="Girls Casual Top" class="bestseller-img" loading="lazy">
+                </div>
+                <div class="bestseller-info">
+                  <h4 class="bestseller-title">Girls Casual Top</h4>
+                  <div class="bestseller-rating">
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <div class="bestseller-price-row">
+                    <span class="current-price">$4.00</span>
+                    <del class="old-price">$5.00</del>
+                  </div>
+                  <div class="bestseller-actions">
+                    <a href="product-details.html?id=bestseller_girls_casual_top&name=Girls%20Casual%20Top&price=4.00&category=Clothes&image=https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                    <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleBestSellerClick('Girls Casual Top', 4.00, 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 4: Woolen Winter Scarf -->
+              <div class="bestseller-item">
+                <div class="bestseller-img-box">
+                  <img src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=200&h=200&fit=crop" alt="Woolen Winter Scarf" class="bestseller-img" loading="lazy">
+                </div>
+                <div class="bestseller-info">
+                  <h4 class="bestseller-title">Woolen Winter Scarf</h4>
+                  <div class="bestseller-rating">
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <div class="bestseller-price-row">
+                    <span class="current-price">$15.00</span>
+                    <del class="old-price">$20.00</del>
+                  </div>
+                  <div class="bestseller-actions">
+                    <a href="product-details.html?id=bestseller_woolen_winter_scarf&name=Woolen%20Winter%20Scarf&price=15.00&category=Accessories&image=https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                    <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleBestSellerClick('Woolen Winter Scarf', 15.00, 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- RIGHT PRODUCT CONTENT: 3 COLUMNS -->
+        <main class="showcase-main-content">
+          <div class="showcase-columns-grid">
+
+            <!-- COLUMN 1: NEW ARRIVALS -->
+            <div class="showcase-col">
+              <h3 class="showcase-col-header">New Arrivals</h3>
+              <div class="showcase-col-cards">
+                <!-- Product 1 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=200&h=200&fit=crop" alt="Relaxed Short Full..." class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Relaxed Short Full-Sleeve T-Shirt">Relaxed Short Full...</h4>
+                    <span class="anon-card-category">Clothes</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$36.00</span>
+                      <del class="price-gray">$45.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_relaxed_short_full&name=Relaxed%20Short%20Full-Sleeve%20T-Shirt&price=36.00&category=Clothes&image=https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Relaxed Short Full-Sleeve T-Shirt', 'Clothes', 36.00, 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&h=200&fit=crop" alt="Girls Pink Embroidered Dress" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Girls Pink Embroidered Dress">Girls Pnk Embro De...</h4>
+                    <span class="anon-card-category">Clothes</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$46.00</span>
+                      <del class="price-gray">$61.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_girls_pink_embro_dress&name=Girls%20Pink%20Embroidered%20Dress&price=46.00&category=Clothes&image=https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Girls Pink Embroidered Dress', 'Clothes', 46.00, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=200&h=200&fit=crop" alt="Black Floral Wrap Maxi Dress" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Black Floral Wrap Maxi Dress">Black Floral Wrap...</h4>
+                    <span class="anon-card-category">Clothes</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$57.00</span>
+                      <del class="price-gray">$76.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_black_floral_wrap_dress&name=Black%20Floral%20Wrap%20Maxi%20Dress&price=57.00&category=Clothes&image=https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Black Floral Wrap Maxi Dress', 'Clothes', 57.00, 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=200&h=200&fit=crop" alt="Pure Garment Dye Casual Shirt" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Pure Garment Dye Casual Shirt">Pure Garment Dye...</h4>
+                    <span class="anon-card-category">Mens Fashion</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$54.00</span>
+                      <del class="price-gray">$68.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_pure_garment_dye_shirt&name=Pure%20Garment%20Dye%20Casual%20Shirt&price=54.00&category=Mens%20Fashion&image=https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Pure Garment Dye Casual Shirt', 'Mens Fashion', 54.00, 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?w=200&h=200&fit=crop" alt="Bohemian Straw Sun Hat" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Bohemian Straw Sun Hat">Bohemian Sun Hat...</h4>
+                    <span class="anon-card-category">Accessories</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$24.00</span>
+                      <del class="price-gray">$32.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_bohemian_sun_hat&name=Bohemian%20Straw%20Sun%20Hat&price=24.00&category=Accessories&image=https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Bohemian Straw Sun Hat', 'Accessories', 24.00, 'https://images.unsplash.com/photo-1572307480813-ceb0e59d8325?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1544441893-675973e31985?w=200&h=200&fit=crop" alt="Classic Denim Winter Jacket" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Classic Denim Winter Jacket">Classic Denim Jacket...</h4>
+                    <span class="anon-card-category">Clothes</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$46.00</span>
+                      <del class="price-gray">$58.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_classic_denim_jacket&name=Classic%20Denim%20Winter%20Jacket&price=46.00&category=Clothes&image=https://images.unsplash.com/photo-1544441893-675973e31985?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Classic Denim Winter Jacket', 'Clothes', 46.00, 'https://images.unsplash.com/photo-1544441893-675973e31985?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200&h=200&fit=crop" alt="Canvas Travel Duffle Bag" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Canvas Travel Duffle Bag">Canvas Travel Duffle...</h4>
+                    <span class="anon-card-category">Bags</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$36.00</span>
+                      <del class="price-gray">$48.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_canvas_travel_duffle&name=Canvas%20Travel%20Duffle%20Bag&price=36.00&category=Bags&image=https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Canvas Travel Duffle Bag', 'Bags', 36.00, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=200&h=200&fit=crop" alt="Wireless ANC Bluetooth Earbuds" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Wireless ANC Bluetooth Earbuds">Wireless ANC Earbuds...</h4>
+                    <span class="anon-card-category">Electronics</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$55.00</span>
+                      <del class="price-gray">$79.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_wireless_anc_earbuds&name=Wireless%20ANC%20Bluetooth%20Earbuds&price=55.00&category=Electronics&image=https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Wireless ANC Bluetooth Earbuds', 'Electronics', 55.00, 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- COLUMN 2: TRENDING -->
+            <div class="showcase-col">
+              <h3 class="showcase-col-header">Trending</h3>
+              <div class="showcase-col-cards">
+                <!-- Product 1 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop" alt="Running & Trekking Sports Shoes" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Running & Trekking Sports Shoes">Running &amp; Trekkin...</h4>
+                    <span class="anon-card-category">Sports</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$39.00</span>
+                      <del class="price-gray">$49.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_running_trekking_shoes&name=Running%20%26%20Trekking%20Sports%20Shoes&price=39.00&category=Sports&image=https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Running & Trekking Sports Shoes', 'Sports', 39.00, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=200&h=200&fit=crop" alt="Trekking & Running Boots" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Trekking & Running Boots">Trekking &amp; Runnin...</h4>
+                    <span class="anon-card-category">Sports</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$58.00</span>
+                      <del class="price-gray">$78.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_trekking_running_boots&name=Trekking%20%26%20Running%20Boots&price=58.00&category=Sports&image=https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Trekking & Running Boots', 'Sports', 58.00, 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=200&h=200&fit=crop" alt="Women's Velvet Evening Party Gown" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Women's Velvet Evening Party Gown">Womens Party We...</h4>
+                    <span class="anon-card-category">Party Wear</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$75.00</span>
+                      <del class="price-gray">$94.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_womens_party_gown&name=Women%27s%20Velvet%20Evening%20Party%20Gown&price=75.00&category=Party%20Wear&image=https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Women\'s Velvet Evening Party Gown', 'Party Wear', 75.00, 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=200&h=200&fit=crop" alt="Sports Claw Women Sneakers" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Sports Claw Women Sneakers">Sports Claw Wome...</h4>
+                    <span class="anon-card-category">Sports</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$52.00</span>
+                      <del class="price-gray">$65.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_sports_claw_sneakers&name=Sports%20Claw%20Women%20Sneakers&price=52.00&category=Sports&image=https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Sports Claw Women Sneakers', 'Sports', 52.00, 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=200&h=200&fit=crop" alt="Matte Velvet Cosmetic Lipstick" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Matte Velvet Cosmetic Lipstick">Matte Velvet Lipstick...</h4>
+                    <span class="anon-card-category">Cosmetics</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$16.00</span>
+                      <del class="price-gray">$22.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_matte_velvet_lipstick&name=Matte%20Velvet%20Cosmetic%20Lipstick&price=16.00&category=Cosmetics&image=https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Matte Velvet Cosmetic Lipstick', 'Cosmetics', 16.00, 'https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=200&h=200&fit=crop" alt="Leather Crossbody Shoulder Bag" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Leather Crossbody Shoulder Bag">Leather Crossbody Bag...</h4>
+                    <span class="anon-card-category">Bags</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$48.00</span>
+                      <del class="price-gray">$64.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_leather_crossbody_bag&name=Leather%20Crossbody%20Shoulder%20Bag&price=48.00&category=Bags&image=https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Leather Crossbody Shoulder Bag', 'Bags', 48.00, 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=200&h=200&fit=crop" alt="Aviator Polarized Sunglasses" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Aviator Polarized Sunglasses">Aviator Polarized Shades...</h4>
+                    <span class="anon-card-category">Glasses</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$28.00</span>
+                      <del class="price-gray">$38.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_aviator_polarized_shades&name=Aviator%20Polarized%20Sunglasses&price=28.00&category=Glasses&image=https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Aviator Polarized Sunglasses', 'Glasses', 28.00, 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=200&h=200&fit=crop" alt="Casual Low-Top Skate Sneakers" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Casual Low-Top Skate Sneakers">Casual Low-Top Sneakers...</h4>
+                    <span class="anon-card-category">Footwear</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$39.00</span>
+                      <del class="price-gray">$52.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_casual_low_top_sneakers&name=Casual%20Low-Top%20Skate%20Sneakers&price=39.00&category=Footwear&image=https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Casual Low-Top Skate Sneakers', 'Footwear', 39.00, 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- COLUMN 3: TOP RATED -->
+            <div class="showcase-col">
+              <h3 class="showcase-col-header">Top Rated</h3>
+              <div class="showcase-col-cards">
+                <!-- Product 1 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&h=200&fit=crop" alt="Vintage Leather Pocket Watch" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Vintage Leather Pocket Watch">Pocket Watch Leat...</h4>
+                    <span class="anon-card-category">Watches</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$40.00</span>
+                      <del class="price-gray">$50.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_vintage_leather_pocket_watch&name=Vintage%20Leather%20Pocket%20Watch&price=40.00&category=Watches&image=https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Vintage Leather Pocket Watch', 'Watches', 40.00, 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=200&h=200&fit=crop" alt="Silver Deer Heart Pendant Necklace" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Silver Deer Heart Pendant Necklace">Silver Deer Heart N...</h4>
+                    <span class="anon-card-category">Jewellery</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$63.00</span>
+                      <del class="price-gray">$84.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_silver_deer_heart_necklace&name=Silver%20Deer%20Heart%20Pendant%20Necklace&price=63.00&category=Jewellery&image=https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Silver Deer Heart Pendant Necklace', 'Jewellery', 63.00, 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=200&h=200&fit=crop" alt="Titan 100 Ml Women Luxury Perfume" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Titan 100 Ml Women Luxury Perfume">Titan 100 Ml Wome...</h4>
+                    <span class="anon-card-category">Perfume</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$33.00</span>
+                      <del class="price-gray">$42.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_titan_100ml_perfume&name=Titan%20100%20Ml%20Women%20Luxury%20Perfume&price=33.00&category=Perfume&image=https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Titan 100 Ml Women Luxury Perfume', 'Perfume', 33.00, 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=200&h=200&fit=crop" alt="Men's Leather Reversible Belt" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Men's Leather Reversible Belt">Men's Leather Rev...</h4>
+                    <span class="anon-card-category">Belt</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$18.00</span>
+                      <del class="price-gray">$24.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_mens_leather_belt&name=Men%27s%20Leather%20Reversible%20Belt&price=18.00&category=Belt&image=https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Men\'s Leather Reversible Belt', 'Belt', 18.00, 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1611591475155-4264738d4361?w=200&h=200&fit=crop" alt="Rose Gold Floral Cuff Bangle" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Rose Gold Floral Cuff Bangle">Rose Gold Floral Bangle...</h4>
+                    <span class="anon-card-category">Jewellery</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$34.00</span>
+                      <del class="price-gray">$46.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_rosegold_floral_bangle&name=Rose%20Gold%20Floral%20Cuff%20Bangle&price=34.00&category=Jewellery&image=https://images.unsplash.com/photo-1611591475155-4264738d4361?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Rose Gold Floral Cuff Bangle', 'Jewellery', 34.00, 'https://images.unsplash.com/photo-1611591475155-4264738d4361?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop" alt="Smart Fitness Minimalist Watch" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Smart Fitness Minimalist Watch">Smart Fitness Watch...</h4>
+                    <span class="anon-card-category">Watches</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$71.00</span>
+                      <del class="price-gray">$89.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_smart_fitness_watch&name=Smart%20Fitness%20Minimalist%20Watch&price=71.00&category=Watches&image=https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Smart Fitness Minimalist Watch', 'Watches', 71.00, 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=200&h=200&fit=crop" alt="Eau De Parfum Luxury Spray" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Eau De Parfum Luxury Spray">Eau De Parfum Spray...</h4>
+                    <span class="anon-card-category">Perfume</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$42.00</span>
+                      <del class="price-gray">$56.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_eau_de_parfum_spray&name=Eau%20De%20Parfum%20Luxury%20Spray&price=42.00&category=Perfume&image=https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Eau De Parfum Luxury Spray', 'Perfume', 42.00, 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="anon-mini-card">
+                  <div class="anon-card-img-box">
+                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&h=200&fit=crop" alt="Organic Hydrating Facial Serum" class="anon-card-img" loading="lazy">
+                  </div>
+                  <div class="anon-card-info">
+                    <h4 class="anon-card-title" title="Organic Hydrating Facial Serum">Organic Hydrating Serum...</h4>
+                    <span class="anon-card-category">Cosmetics</span>
+                    <div class="anon-card-prices">
+                      <span class="price-pink">$27.00</span>
+                      <del class="price-gray">$34.00</del>
+                    </div>
+                    <div class="anon-card-actions">
+                      <a href="product-details.html?id=showcase_organic_hydrating_serum&name=Organic%20Hydrating%20Facial%20Serum&price=27.00&category=Cosmetics&image=https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop" class="btn btn-secondary btn-xs anon-btn-details">View Details</a>
+                      <button type="button" class="btn btn-primary btn-xs anon-btn-cart" onclick="handleShowcaseProduct('Organic Hydrating Facial Serum', 'Cosmetics', 27.00, 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&h=200&fit=crop')">🛒 Add to Cart</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </main>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FEATURED PRODUCTS ====== -->
+  <section class="section" id="featured">
+    <div class="container">
+      <h2 class="section-title">Featured Products</h2>
+      <p class="section-subtitle">Handpicked top sellers our customers love</p>
+      <div class="products-grid" id="featured-products-grid">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>Loading featured products…</p>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top: var(--space-8);">
+        <a href="products.html" class="btn btn-secondary btn-lg">View All Products →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WHY CHOOSE SHOPEASE ====== -->
+  <section class="section" id="benefits">
+    <div class="container">
+      <h2 class="section-title">Why Choose ShopEase?</h2>
+      <p class="section-subtitle">Here's why thousands of shoppers trust us</p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">⭐</div>
+          <h3>Quality Products</h3>
+          <p>Every product is carefully selected and quality-checked to ensure you get the best.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🔒</div>
+          <h3>Secure Ordering</h3>
+          <p>Your personal information and orders are protected with industry-standard security.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🚚</div>
+          <h3>Fast Delivery</h3>
+          <p>Get your orders delivered quickly. Free delivery on orders above ₹999!</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎯</div>
+          <h3>Easy Shopping</h3>
+          <p>A smooth, intuitive shopping experience from browsing to checkout.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">🛒 ShopEase</div>
+          <p class="footer-desc">Your one-stop destination for quality electronics, fashion, accessories, and home products. We bring the best products to your doorstep at amazing prices.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="products.html">Electronics</a></li>
+            <li><a href="products.html">Fashion</a></li>
+            <li><a href="products.html">Accessories</a></li>
+            <li><a href="products.html">Home</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:support@shopease.com">support@shopease.com</a></li>
+            <li><a href="tel:+911234567890">+91 12345 67890</a></li>
+            <li><a href="#">Mumbai, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShopEase. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script>
+    // Load featured products (show first 4)
+    document.addEventListener('DOMContentLoaded', async () => {
+      const grid = document.getElementById('featured-products-grid');
+      if (!grid) return;
+      try {
+        const products = await fetchProducts();
+        // Show top 4 products sorted by rating
+        const featured = products
+          .sort((a, b) => b.rating - a.rating)
+          .slice(0, 4);
+
+        grid.innerHTML = featured.map(product => {
+          const stock = getStockStatus(product.stock);
+          const escapedName = (product.name || '').replace(/'/g, "\\'");
+
+          return `
+            <div class="product-card">
+              <div class="product-card-image product-image-container">
+                <img src="${product.image}" alt="${product.name}" loading="lazy">
+                <span class="product-card-badge">${product.category}</span>
+              </div>
+              <div class="product-card-body">
+                <span class="product-card-category">${product.category}</span>
+                <h3 class="product-card-name">${product.name}</h3>
+                <p class="product-card-desc">${product.description}</p>
+                <div class="product-card-meta">
+                  <span class="product-card-price">${formatPrice(product.price)}</span>
+                  <span class="product-card-rating">${generateStars(product.rating)} ${product.rating}</span>
+                </div>
+                <p class="product-card-stock ${stock.className}">${stock.text}</p>
+                <div class="product-card-actions">
+                  <a href="product-details.html?id=${product._id}" class="btn btn-secondary btn-sm">View Details</a>
+                  <button class="btn btn-primary btn-sm" onclick="addToCart({_id:'${product._id}',name:'${escapedName}',price:${product.price},image:'${product.image}',stock:${product.stock}},1)"
+                          ${product.stock === 0 ? 'disabled' : ''}>
+                    ${product.stock === 0 ? 'Out of Stock' : '🛒 Add to Cart'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      } catch (error) {
+        grid.innerHTML = `
+          <div class="no-results" style="grid-column:1/-1">
+            <span class="no-results-icon">📦</span>
+            <h3>Products coming soon!</h3>
+            <p>Please make sure the server is running.</p>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

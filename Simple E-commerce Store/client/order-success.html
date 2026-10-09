@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your ShopEase order has been placed successfully. View your order details and confirmation.">
+  <title>Order Confirmed — ShopEase</title>
+  <!-- Anti-flicker theme script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('shopease_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="brand-icon">🛒</span>
+        <span>ShopEase</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item">🏠 Home</a>
+        <a href="products.html" class="nav-item">📦 Products</a>
+        <a href="cart.html" class="nav-item cart-link">
+          🛒 Cart
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <div class="nav-auth" id="nav-auth">
+          <a href="login.html" class="nav-signin-btn" id="nav-signin-btn">
+            <span>👤</span>
+            <span>Sign In</span>
+          </a>
+        </div>
+      </div>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== ORDER SUCCESS ====== -->
+  <main class="order-success-page">
+    <div class="container">
+      <div class="success-container" id="order-success-container">
+        <!-- Rendered by inline script -->
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>Loading order details…</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">🛒 ShopEase</div>
+          <p class="footer-desc">Your one-stop destination for quality electronics, fashion, accessories, and home products.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="products.html">Electronics</a></li>
+            <li><a href="products.html">Fashion</a></li>
+            <li><a href="products.html">Accessories</a></li>
+            <li><a href="products.html">Home</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:support@shopease.com">support@shopease.com</a></li>
+            <li><a href="tel:+911234567890">+91 12345 67890</a></li>
+            <li><a href="#">Mumbai, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShopEase. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script>
+    /**
+     * Order Success Page
+     * Reads the order data from sessionStorage (set by checkout.js after successful API response).
+     * Displays the real order ID, customer info, items, and totals from the backend response.
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('order-success-container');
+
+      // Retrieve order data from sessionStorage
+      const orderDataStr = sessionStorage.getItem('shopease_last_order');
+
+      if (!orderDataStr) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <span class="empty-icon">📋</span>
+            <h2>No order found</h2>
+            <p>It looks like you haven't placed an order yet, or the session has expired.</p>
+            <a href="products.html" class="btn btn-primary btn-lg">🛍️ Shop Now</a>
+          </div>
+        `;
+        return;
+      }
+
+      try {
+        const order = JSON.parse(orderDataStr);
+
+        // Format price helper
+        const fmt = (amount) => '₹' + amount.toLocaleString('en-IN');
+
+        // Build the items table rows
+        const itemRows = order.items.map(item => `
+          <tr>
+            <td>${item.name}</td>
+            <td>${item.quantity}</td>
+            <td>${fmt(item.price)}</td>
+            <td>${fmt(item.price * item.quantity)}</td>
+          </tr>
+        `).join('');
+
+        container.innerHTML = `
+          <div class="success-icon">✅</div>
+          <h1>Order Placed Successfully!</h1>
+          <p class="success-msg">Thank you for your purchase, ${order.customerName}! Your order has been confirmed and will be processed shortly.</p>
+
+          <div class="order-details-card">
+            <h3>📦 Order Details</h3>
+            <div class="order-detail-row">
+              <span class="label">Order ID</span>
+              <span class="value"><span class="order-id-highlight">${order.orderId}</span></span>
+            </div>
+            <div class="order-detail-row">
+              <span class="label">Customer</span>
+              <span class="value">${order.customerName}</span>
+            </div>
+            <div class="order-detail-row">
+              <span class="label">Email</span>
+              <span class="value">${order.email}</span>
+            </div>
+            <div class="order-detail-row">
+              <span class="label">Phone</span>
+              <span class="value">${order.phone}</span>
+            </div>
+            <div class="order-detail-row">
+              <span class="label">Delivery Address</span>
+              <span class="value">${order.address}, ${order.city}, ${order.state} — ${order.pinCode}</span>
+            </div>
+            <div class="order-detail-row">
+              <span class="label">Payment Method</span>
+              <span class="value">${order.paymentMethod}</span>
+            </div>
+            <div class="order-detail-row">
+              <span class="label">Order Status</span>
+              <span class="value"><span class="order-status-badge">✓ ${order.orderStatus}</span></span>
+            </div>
+          </div>
+
+          <div class="order-details-card">
+            <h3>🛒 Ordered Products</h3>
+            <table class="order-items-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${itemRows}
+              </tbody>
+            </table>
+
+            <div style="margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--gray-200);">
+              <div class="order-detail-row">
+                <span class="label">Subtotal</span>
+                <span class="value">${fmt(order.subtotal)}</span>
+              </div>
+              <div class="order-detail-row">
+                <span class="label">Delivery</span>
+                <span class="value">${order.deliveryCharge === 0 ? '<span style="color:var(--success);font-weight:600;">FREE</span>' : fmt(order.deliveryCharge)}</span>
+              </div>
+              <div class="order-detail-row" style="font-size:var(--font-size-lg);font-weight:800;">
+                <span class="label" style="font-weight:800;">Total</span>
+                <span class="value">${fmt(order.totalAmount)}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="success-actions">
+            <a href="index.html" class="btn btn-primary btn-lg">🏠 Continue Shopping</a>
+            <a href="products.html" class="btn btn-secondary btn-lg">📦 View Products</a>
+          </div>
+        `;
+
+        // Clear session data so it doesn't persist across refreshes leading to stale data
+        // (The order is already saved in MongoDB, accessible via GET /api/orders/:id)
+        sessionStorage.removeItem('shopease_last_order');
+
+      } catch (error) {
+        console.error('Error parsing order data:', error);
+        container.innerHTML = `
+          <div class="empty-state">
+            <span class="empty-icon">😔</span>
+            <h2>Something went wrong</h2>
+            <p>We couldn't display your order details. Your order may still have been placed successfully.</p>
+            <a href="index.html" class="btn btn-primary btn-lg">🏠 Go Home</a>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

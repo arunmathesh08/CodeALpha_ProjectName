@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign In to your ShopEase account to manage orders, view your cart, and enjoy seamless shopping.">
+  <title>Sign In — ShopEase</title>
+  <!-- Anti-flicker theme script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('shopease_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="brand-icon">🛒</span>
+        <span>ShopEase</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item">🏠 Home</a>
+        <a href="products.html" class="nav-item">📦 Products</a>
+        <a href="cart.html" class="nav-item cart-link">
+          🛒 Cart
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <div class="nav-auth" id="nav-auth">
+          <a href="login.html" class="nav-signin-btn active" id="nav-signin-btn">
+            <span>👤</span>
+            <span>Sign In</span>
+          </a>
+        </div>
+      </div>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== AUTH SECTION ====== -->
+  <main class="auth-page">
+    <div class="container">
+      <div class="auth-card" id="auth-card">
+        
+        <!-- Logged In State View (rendered dynamically if already logged in) -->
+        <div id="auth-logged-in" class="logged-in-box" style="display: none;">
+          <span class="logged-in-avatar">👋</span>
+          <h3 id="user-display-name">Welcome Back!</h3>
+          <p id="user-display-email">you@example.com</p>
+          <div class="logged-in-actions">
+            <a href="index.html" class="btn btn-primary btn-lg">🛍️ Start Shopping</a>
+            <a href="cart.html" class="btn btn-secondary">🛒 View Shopping Cart</a>
+            <button type="button" class="btn btn-danger" onclick="handleLogout()">Sign Out of Account</button>
+          </div>
+        </div>
+
+        <!-- Auth Form Container -->
+        <div id="auth-forms-container">
+          <div class="auth-header">
+            <span class="brand-icon">🛒</span>
+            <h2 id="auth-title">Welcome to ShopEase</h2>
+            <p id="auth-subtitle">Sign in to access your orders and saved items</p>
+          </div>
+
+          <!-- Tabs -->
+          <div class="auth-tabs">
+            <button type="button" class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+            <button type="button" class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Create Account</button>
+          </div>
+
+          <!-- Login Form -->
+          <form id="login-form" class="auth-form" onsubmit="handleLoginSubmit(event)">
+            <div class="form-group">
+              <label for="login-email">Email Address <span class="required">*</span></label>
+              <input type="email" id="login-email" required placeholder="alex@example.com" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="login-password">Password <span class="required">*</span></label>
+              <input type="password" id="login-password" required placeholder="••••••••" autocomplete="current-password">
+            </div>
+
+            <div class="auth-options">
+              <label>
+                <input type="checkbox" id="remember-me" checked>
+                <span>Remember me</span>
+              </label>
+              <a href="javascript:void(0)" onclick="showNotification('Password reset link sent to your email demo!', 'warning')">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              Sign In to ShopEase
+            </button>
+
+            <!-- Quick Demo Login -->
+            <div class="demo-login-box">
+              <p>💡 Want to test quickly? Click below:</p>
+              <button type="button" class="btn btn-secondary btn-sm" onclick="quickDemoLogin()" style="width: 100%;">
+                ⚡ Instant Demo Login (Alex Johnson)
+              </button>
+            </div>
+          </form>
+
+          <!-- Register Form -->
+          <form id="register-form" class="auth-form" style="display: none;" onsubmit="handleRegisterSubmit(event)">
+            <div class="form-group">
+              <label for="reg-name">Full Name <span class="required">*</span></label>
+              <input type="text" id="reg-name" required placeholder="Alex Johnson" autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="reg-email">Email Address <span class="required">*</span></label>
+              <input type="email" id="reg-email" required placeholder="alex@example.com" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="reg-password">Password <span class="required">*</span></label>
+              <input type="password" id="reg-password" required minlength="6" placeholder="At least 6 characters" autocomplete="new-password">
+            </div>
+
+            <div class="form-group">
+              <label for="reg-confirm-password">Confirm Password <span class="required">*</span></label>
+              <input type="password" id="reg-confirm-password" required minlength="6" placeholder="Repeat your password" autocomplete="new-password">
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              Create My Account
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">🛒 ShopEase</div>
+          <p class="footer-desc">Your one-stop destination for quality electronics, fashion, accessories, and home products.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="products.html">Electronics</a></li>
+            <li><a href="products.html">Fashion</a></li>
+            <li><a href="products.html">Accessories</a></li>
+            <li><a href="products.html">Home</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:support@shopease.com">support@shopease.com</a></li>
+            <li><a href="tel:+911234567890">+91 12345 67890</a></li>
+            <li><a href="#">Mumbai, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShopEase. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script>
+    function switchAuthTab(tab) {
+      const loginTab = document.getElementById('tab-login');
+      const registerTab = document.getElementById('tab-register');
+      const loginForm = document.getElementById('login-form');
+      const registerForm = document.getElementById('register-form');
+      const title = document.getElementById('auth-title');
+      const subtitle = document.getElementById('auth-subtitle');
+
+      if (tab === 'login') {
+        loginTab.classList.add('active');
+        registerTab.classList.remove('active');
+        loginForm.style.display = 'flex';
+        registerForm.style.display = 'none';
+        title.textContent = 'Welcome to ShopEase';
+        subtitle.textContent = 'Sign in to access your orders and saved items';
+      } else {
+        registerTab.classList.add('active');
+        loginTab.classList.remove('active');
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'flex';
+        title.textContent = 'Create an Account';
+        subtitle.textContent = 'Join ShopEase for fast checkout and exclusive deals';
+      }
+    }
+
+    function renderAuthState() {
+      const user = getCurrentUser();
+      const loggedInBox = document.getElementById('auth-logged-in');
+      const formsContainer = document.getElementById('auth-forms-container');
+
+      if (user && user.name) {
+        loggedInBox.style.display = 'block';
+        formsContainer.style.display = 'none';
+        document.getElementById('user-display-name').textContent = `Hello, ${user.name}!`;
+        document.getElementById('user-display-email').textContent = user.email || 'Member of ShopEase';
+      } else {
+        loggedInBox.style.display = 'none';
+        formsContainer.style.display = 'block';
+      }
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const defaultName = email.split('@')[0].replace(/[._]/g, ' ') || 'Shopper';
+      const capitalized = defaultName.charAt(0).toUpperCase() + defaultName.slice(1);
+      
+      setCurrentUser({ name: capitalized, email: email });
+      showNotification(`Welcome back, ${capitalized}!`, 'success');
+      renderAuthState();
+      
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1000);
+    }
+
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const pass = document.getElementById('reg-password').value;
+      const confirmPass = document.getElementById('reg-confirm-password').value;
+
+      if (pass !== confirmPass) {
+        showNotification('Passwords do not match!', 'error');
+        return;
+      }
+
+      setCurrentUser({ name: name, email: email });
+      showNotification(`Account created! Welcome, ${name}!`, 'success');
+      renderAuthState();
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1000);
+    }
+
+    function quickDemoLogin() {
+      setCurrentUser({ name: 'Alex Johnson', email: 'alex.johnson@example.com' });
+      showNotification('Signed in as Alex Johnson!', 'success');
+      renderAuthState();
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1000);
+    }
+
+    function handleLogout() {
+      logoutUser();
+      renderAuthState();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderAuthState();
+    });
+  </script>
+</body>
+</html>

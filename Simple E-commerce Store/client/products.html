@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse all ShopEase products. Search, filter by category, and sort by price to find the perfect product.">
+  <title>Products — ShopEase</title>
+  <!-- Anti-flicker theme script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('shopease_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="brand-icon">🛒</span>
+        <span>ShopEase</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item">🏠 Home</a>
+        <a href="products.html" class="nav-item active">📦 Products</a>
+        <a href="cart.html" class="nav-item cart-link">
+          🛒 Cart
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <div class="nav-auth" id="nav-auth">
+          <a href="login.html" class="nav-signin-btn" id="nav-signin-btn">
+            <span>👤</span>
+            <span>Sign In</span>
+          </a>
+        </div>
+      </div>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== PAGE HEADER ====== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Our Products</h1>
+      <p>Discover amazing products at great prices</p>
+    </div>
+  </section>
+
+  <!-- ====== PRODUCTS SECTION ====== -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Toolbar: Search, Filter, Sort -->
+      <div class="products-toolbar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" placeholder="Search products..." aria-label="Search products">
+        </div>
+        <div class="filter-group">
+          <select id="category-filter" aria-label="Filter by category">
+            <option value="all">All Categories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Accessories">Accessories</option>
+            <option value="Home">Home</option>
+            <option value="DRESS & FROCK">DRESS &amp; FROCK</option>
+            <option value="WINTER WEAR">WINTER WEAR</option>
+            <option value="GLASSES & LENS">GLASSES &amp; LENS</option>
+            <option value="SHORTS & JEANS">SHORTS &amp; JEANS</option>
+          </select>
+          <select id="sort-filter" aria-label="Sort by price">
+            <option value="default">Sort By</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+          </select>
+        </div>
+        <div class="results-info" id="results-info"></div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="products-grid">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>Loading products…</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">🛒 ShopEase</div>
+          <p class="footer-desc">Your one-stop destination for quality electronics, fashion, accessories, and home products.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="products.html?category=Electronics">Electronics</a></li>
+            <li><a href="products.html?category=Fashion">Fashion</a></li>
+            <li><a href="products.html?category=Accessories">Accessories</a></li>
+            <li><a href="products.html?category=Home">Home</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:support@shopease.com">support@shopease.com</a></li>
+            <li><a href="tel:+911234567890">+91 12345 67890</a></li>
+            <li><a href="#">Mumbai, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShopEase. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

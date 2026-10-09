@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your ShopEase order with secure checkout. Enter delivery details and select payment method.">
+  <title>Checkout — ShopEase</title>
+  <!-- Anti-flicker theme script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('shopease_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="brand-icon">🛒</span>
+        <span>ShopEase</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item">🏠 Home</a>
+        <a href="products.html" class="nav-item">📦 Products</a>
+        <a href="cart.html" class="nav-item cart-link">
+          🛒 Cart
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <div class="nav-auth" id="nav-auth">
+          <a href="login.html" class="nav-signin-btn" id="nav-signin-btn">
+            <span>👤</span>
+            <span>Sign In</span>
+          </a>
+        </div>
+      </div>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== PAGE HEADER ====== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Checkout</h1>
+      <p>Complete your order details</p>
+    </div>
+  </section>
+
+  <!-- ====== CHECKOUT CONTENT ====== -->
+  <main class="checkout-page">
+    <div class="container">
+      <form id="checkout-form" novalidate>
+        <div class="checkout-layout">
+
+          <!-- Left: Form sections -->
+          <div class="checkout-form-section">
+
+            <!-- Customer Details -->
+            <div class="form-card">
+              <h3>👤 Customer Details</h3>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="customer-name">Full Name <span class="required">*</span></label>
+                  <input type="text" id="customer-name" placeholder="Enter your full name" required>
+                  <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                  <label for="customer-email">Email <span class="required">*</span></label>
+                  <input type="email" id="customer-email" placeholder="you@example.com" required>
+                  <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                  <label for="customer-phone">Phone Number <span class="required">*</span></label>
+                  <input type="tel" id="customer-phone" placeholder="10-digit number" maxlength="10" required>
+                  <span class="error-message"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Delivery Address -->
+            <div class="form-card">
+              <h3>📍 Delivery Address</h3>
+              <div class="form-grid">
+                <div class="form-group full-width">
+                  <label for="customer-address">Address <span class="required">*</span></label>
+                  <input type="text" id="customer-address" placeholder="Street address, apartment, suite" required>
+                  <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                  <label for="customer-city">City <span class="required">*</span></label>
+                  <input type="text" id="customer-city" placeholder="City" required>
+                  <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                  <label for="customer-state">State <span class="required">*</span></label>
+                  <input type="text" id="customer-state" placeholder="State" required>
+                  <span class="error-message"></span>
+                </div>
+                <div class="form-group">
+                  <label for="customer-pincode">PIN Code <span class="required">*</span></label>
+                  <input type="text" id="customer-pincode" placeholder="6-digit PIN code" maxlength="6" required>
+                  <span class="error-message"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="form-card">
+              <h3>💳 Payment Method</h3>
+
+              <div class="payment-options">
+                <div class="payment-option selected">
+                  <input type="radio" name="payment" id="payment-cod" value="Cash on Delivery" checked>
+                  <label for="payment-cod">Cash on Delivery</label>
+                  <span class="payment-icon">💵</span>
+                </div>
+                <div class="payment-option">
+                  <input type="radio" name="payment" id="payment-card" value="Demo Card Payment">
+                  <label for="payment-card">Demo Card Payment</label>
+                  <span class="payment-icon">💳</span>
+                </div>
+              </div>
+
+              <!-- Demo Card Fields (hidden by default) -->
+              <div id="card-fields" class="card-fields" style="display: none;">
+                <div class="form-grid">
+                  <div class="form-group full-width">
+                    <label for="card-name">Cardholder Name</label>
+                    <input type="text" id="card-name" placeholder="Name on card">
+                  </div>
+                  <div class="form-group full-width">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                  </div>
+                  <div class="form-group">
+                    <label for="card-expiry">Expiry Date</label>
+                    <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+                  </div>
+                  <div class="form-group">
+                    <label for="card-cvv">CVV</label>
+                    <input type="text" id="card-cvv" placeholder="123" maxlength="3">
+                  </div>
+                </div>
+              </div>
+
+              <div class="demo-notice">
+                ⚠️ <strong>Demo Payment</strong> — No real payment will be processed. This is a demonstration only.
+              </div>
+            </div>
+
+            <!-- Place Order Button -->
+            <button type="submit" class="btn btn-primary btn-lg" id="place-order-btn" style="width:100%;">
+              🛍️ Place Order
+            </button>
+
+          </div>
+
+          <!-- Right: Order Summary Sidebar -->
+          <div class="order-summary-card" id="checkout-summary">
+            <!-- Rendered by checkout.js -->
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">🛒 ShopEase</div>
+          <p class="footer-desc">Your one-stop destination for quality electronics, fashion, accessories, and home products.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Categories</h4>
+          <ul>
+            <li><a href="products.html">Electronics</a></li>
+            <li><a href="products.html">Fashion</a></li>
+            <li><a href="products.html">Accessories</a></li>
+            <li><a href="products.html">Home</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:support@shopease.com">support@shopease.com</a></li>
+            <li><a href="tel:+911234567890">+91 12345 67890</a></li>
+            <li><a href="#">Mumbai, India</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ShopEase. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>

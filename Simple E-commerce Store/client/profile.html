@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My Profile — Manage your account, orders, and delivery addresses on ShopEase.">
+  <title>My Profile — ShopEase</title>
+  <!-- Anti-flicker theme script -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('shopease_theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .profile-page-wrapper {
+      min-height: calc(100vh - var(--navbar-height));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      background: var(--gray-50);
+    }
+    .profile-standalone-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--white);
+      border-radius: 28px;
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <span class="brand-icon">🛒</span>
+        <span>ShopEase</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-item">🏠 Home</a>
+        <a href="products.html" class="nav-item">📦 Products</a>
+        <a href="cart.html" class="nav-item cart-link">
+          🛒 Cart
+          <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <div class="nav-auth" id="nav-auth">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+      <div class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== PROFILE PAGE CONTENT ====== -->
+  <main class="profile-page-wrapper">
+    <div class="profile-standalone-card">
+      
+      <!-- Top Header Bar -->
+      <div class="profile-panel-header">
+        <a href="index.html" class="profile-icon-btn profile-close-btn" aria-label="Back to Home" title="Back to Home">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </a>
+        <h1 class="profile-panel-title">My Profile</h1>
+        <button type="button" class="profile-icon-btn profile-settings-btn" onclick="toggleTheme()" aria-label="Settings" title="Toggle Theme (Dark / Light)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- User Profile Header -->
+      <div class="profile-user-section">
+        <div class="profile-avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=faces" alt="User Avatar" class="profile-avatar-img" id="page-profile-avatar">
+          <label for="page-avatar-input" class="profile-avatar-badge" title="Change Photo">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+          </label>
+          <input type="file" id="page-avatar-input" accept="image/*" style="display:none;" onchange="handleAvatarFileSelect(event); syncPageProfile();">
+        </div>
+        <div class="profile-user-info">
+          <h2 class="profile-user-name" id="page-profile-name">Arun</h2>
+          <p class="profile-user-email" id="page-profile-email">arunmathesh08@gmail.com</p>
+          <button type="button" class="profile-edit-btn" onclick="openEditProfileModal()">Edit Profile</button>
+        </div>
+      </div>
+
+      <!-- Section 1: Orders / Purchases -->
+      <div class="profile-menu-section">
+        <button type="button" class="profile-menu-item" onclick="openOrdersModal()">
+          <div class="profile-item-left">
+            <span class="profile-item-icon">📦</span>
+            <span class="profile-item-label">Orders / Purchases</span>
+          </div>
+          <span class="profile-item-arrow">›</span>
+        </button>
+      </div>
+
+      <div class="profile-divider"></div>
+
+      <!-- Section 2: Preferences (Language, Currency & Delivery Address) -->
+      <div class="profile-menu-section">
+        <button type="button" class="profile-menu-item" onclick="openLanguageModal()" aria-label="Change Language">
+          <div class="profile-item-left">
+            <span class="profile-item-icon">🌐</span>
+            <span class="profile-item-label" data-i18n="language">Language</span>
+          </div>
+          <div class="profile-item-right">
+            <span class="profile-item-badge" id="page-lang-badge">English</span>
+            <span class="profile-item-arrow">›</span>
+          </div>
+        </button>
+
+        <button type="button" class="profile-menu-item" onclick="openCurrencyModal()" aria-label="Change Currency">
+          <div class="profile-item-left">
+            <span class="profile-item-icon">💱</span>
+            <span class="profile-item-label" data-i18n="currency">Currency</span>
+          </div>
+          <div class="profile-item-right">
+            <span class="profile-item-badge" id="page-currency-badge">USD $</span>
+            <span class="profile-item-arrow">›</span>
+          </div>
+        </button>
+
+        <button type="button" class="profile-menu-item" onclick="openAddressModal()" aria-label="Delivery Address">
+          <div class="profile-item-left">
+            <span class="profile-item-icon">📍</span>
+            <span class="profile-item-label" data-i18n="delivery_address">Delivery Address</span>
+          </div>
+          <span class="profile-item-arrow">›</span>
+        </button>
+      </div>
+
+      <div class="profile-divider"></div>
+
+      <!-- Section 3: Account (Log Out) -->
+      <div class="profile-menu-section">
+        <button type="button" class="profile-menu-item text-danger" onclick="logoutUser()" aria-label="Log Out">
+          <div class="profile-item-left">
+            <span class="profile-item-icon">🚪</span>
+            <span class="profile-item-label" data-i18n="log_out">Log Out</span>
+          </div>
+          <span class="profile-item-arrow">›</span>
+        </button>
+      </div>
+
+      <div class="profile-divider"></div>
+
+      <!-- Footer -->
+      <div class="profile-panel-footer">
+        <span>App Version 2.3</span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script>
+    function syncPageProfile() {
+      const user = getCurrentUser();
+      if (!user) {
+        window.location.replace('login.html');
+        return;
+      }
+      document.getElementById('page-profile-name').textContent = user.name || 'Arun';
+      document.getElementById('page-profile-email').textContent = user.email || 'arunmathesh08@gmail.com';
+      if (user.avatar) {
+        document.getElementById('page-profile-avatar').src = user.avatar;
+      }
+      const langBadge = document.getElementById('page-lang-badge');
+      if (langBadge) {
+        langBadge.textContent = getStoredLang();
+      }
+      const currBadge = document.getElementById('page-currency-badge');
+      if (currBadge) {
+        const curr = getStoredCurrency();
+        currBadge.textContent = (CURRENCIES[curr] && CURRENCIES[curr].label) || `${curr} $`;
+      }
+      applyAppLanguage();
+      applyAppCurrency();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      syncPageProfile();
+    });
+  </script>
+</body>
+</html>
