@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConnectHub - Modern Social & Communities</title>
+  <meta name="description" content="ConnectHub is a next-generation mini social media and community platform combining rich profiles, live feeds, Reddit-style communities, voting, and threaded discussions." />
+  
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="navbar">
+    <a href="/index.html" class="navbar-brand">
+      <div class="navbar-logo-icon"><i class="bi bi-intersect"></i></div>
+      Connect<span class="highlight">Hub</span>
+    </a>
+
+    <!-- Global Search with Quick Dropdown -->
+    <div class="nav-search-container">
+      <i class="bi bi-search nav-search-icon"></i>
+      <input type="text" class="nav-search-input" id="nav-search-input" placeholder="Search ConnectHub (people, communities, tags)..." autocomplete="off" />
+      <div class="search-results-dropdown" id="nav-search-dropdown"></div>
+    </div>
+
+    <!-- Actions -->
+    <div class="navbar-actions">
+      <!-- Create Post Trigger Button -->
+      <button class="btn btn-primary open-create-post-trigger" id="nav-create-post-btn">
+        <i class="bi bi-plus-lg"></i>
+        <span class="btn-create-post-text">Create Post</span>
+      </button>
+
+      <!-- Theme Switcher -->
+      <button class="nav-icon-btn theme-toggle-btn" title="Toggle Light/Dark Theme">
+        <i class="bi bi-sun-fill"></i>
+      </button>
+
+      <!-- Notifications Bell (User Only) -->
+      <a href="/notifications.html" class="nav-icon-btn auth-user-only" title="Notifications" style="text-decoration:none;">
+        <i class="bi bi-bell"></i>
+        <span class="nav-badge-count notification-unread-badge" style="display:none;">0</span>
+      </a>
+
+      <!-- Guest Login Button -->
+      <div class="auth-guest-only">
+        <button class="btn btn-secondary btn-sm" onclick="openAuthModal('login')">
+          <i class="bi bi-box-arrow-in-right"></i> Log In
+        </button>
+      </div>
+
+      <!-- User Menu Dropdown (User Only) -->
+      <div class="nav-user-menu auth-user-only" style="display:none;">
+        <button class="nav-user-btn" id="nav-user-menu-btn">
+          <img src="https://api.dicebear.com/7.x/bottts/svg?seed=user" alt="User" class="avatar-img current-user-avatar" />
+          <i class="bi bi-chevron-down" style="font-size:0.75rem; color:var(--text-muted);"></i>
+        </button>
+
+        <div class="nav-dropdown" id="nav-user-dropdown">
+          <div style="padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border-color); margin-bottom: 0.25rem;">
+            <div class="current-user-fullname" style="font-weight:700; font-size:0.95rem;">User</div>
+            <div class="current-user-username" style="font-size:0.8rem; color:var(--text-muted);">@username</div>
+          </div>
+          <a href="/profile.html" class="dropdown-item current-user-profile-link">
+            <i class="bi bi-person"></i> My Profile
+          </a>
+          <a href="/profile.html?tab=saved" class="dropdown-item">
+            <i class="bi bi-bookmark"></i> Saved Posts
+          </a>
+          <a href="#" class="dropdown-item" onclick="openCreateCommunityModal(); return false;">
+            <i class="bi bi-plus-circle"></i> Create Community
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item logout-btn" style="color:#ef4444;">
+            <i class="bi bi-box-arrow-right"></i> Log Out
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3-Column Layout Container -->
+  <main class="app-container">
+    <!-- Left Navigation Sidebar -->
+    <aside class="left-sidebar">
+      <nav class="nav-menu-list">
+        <a href="/index.html" class="nav-menu-item active">
+          <i class="bi bi-house-door-fill"></i> Home Feed
+        </a>
+        <a href="/search.html" class="nav-menu-item">
+          <i class="bi bi-compass-fill"></i> Explore Communities
+        </a>
+        <a href="/notifications.html" class="nav-menu-item auth-user-only">
+          <i class="bi bi-bell-fill"></i> Notifications
+        </a>
+        <a href="/profile.html?tab=saved" class="nav-menu-item auth-user-only">
+          <i class="bi bi-bookmark-fill"></i> Saved Bookmarks
+        </a>
+        <a href="/profile.html" class="nav-menu-item current-user-profile-link auth-user-only">
+          <i class="bi bi-person-circle"></i> My Profile
+        </a>
+      </nav>
+
+      <div class="sidebar-section-title" style="margin-top:0.75rem;">Joined Communities</div>
+      <div class="nav-menu-list" id="left-communities-list">
+        <div class="skeleton" style="height:32px;margin-bottom:0.4rem;"></div>
+        <div class="skeleton" style="height:32px;"></div>
+      </div>
+
+      <div style="margin-top:0.5rem; padding: 0 0.5rem;">
+        <button class="btn btn-secondary btn-sm" style="width:100%;" onclick="openCreateCommunityModal()">
+          <i class="bi bi-plus-circle"></i> Create Community
+        </button>
+      </div>
+    </aside>
+
+    <!-- Center Main Feed -->
+    <section class="main-content">
+      <!-- Create Post Quick Input Box -->
+      <div class="glass-card create-post-box">
+        <div class="create-post-input-row">
+          <img src="https://api.dicebear.com/7.x/bottts/svg?seed=user" alt="Avatar" class="avatar-img current-user-avatar" />
+          <div class="create-post-trigger-input open-create-post-trigger">
+            What's on your mind? Share a thought, image, or link...
+          </div>
+        </div>
+        <div class="create-post-actions-row">
+          <button class="create-post-type-btn photo open-create-post-trigger">
+            <i class="bi bi-image"></i> Image
+          </button>
+          <button class="create-post-type-btn link open-create-post-trigger">
+            <i class="bi bi-link-45deg"></i> Link
+          </button>
+          <button class="create-post-type-btn text open-create-post-trigger">
+            <i class="bi bi-chat-left-text"></i> Discussion
+          </button>
+          <button class="btn btn-primary btn-sm open-create-post-trigger">
+            Post
+          </button>
+        </div>
+      </div>
+
+      <!-- Feed Filter Tabs Nav -->
+      <nav class="tabs-nav">
+        <button class="tab-btn feed-tab-btn active" data-tab="for-you">
+          <i class="bi bi-stars"></i> For You
+        </button>
+        <button class="tab-btn feed-tab-btn auth-user-only" data-tab="following">
+          <i class="bi bi-people"></i> Following
+        </button>
+        <button class="tab-btn feed-tab-btn auth-user-only" data-tab="joined">
+          <i class="bi bi-collection"></i> Joined Communities
+        </button>
+        <button class="tab-btn feed-tab-btn" data-tab="popular">
+          <i class="bi bi-fire"></i> Popular
+        </button>
+        <button class="tab-btn feed-tab-btn" data-tab="new">
+          <i class="bi bi-clock-history"></i> New
+        </button>
+        <button class="tab-btn feed-tab-btn" data-tab="top">
+          <i class="bi bi-trophy"></i> Top Voted
+        </button>
+      </nav>
+
+      <!-- Main Posts Feed Stream -->
+      <div id="posts-feed-container" style="display:flex; flex-direction:column; gap:1.25rem;">
+        <div class="glass-card skeleton" style="height: 180px;"></div>
+      </div>
+    </section>
+
+    <!-- Right Sidebar Widgets -->
+    <aside class="right-sidebar">
+      <!-- Trending Topics Widget -->
+      <div class="glass-card widget-card">
+        <div class="widget-title">
+          <span><i class="bi bi-graph-up-arrow" style="color:var(--accent-secondary);margin-right:0.4rem;"></i> Trending Topics</span>
+        </div>
+        <div id="trending-topics-widget">
+          <div class="skeleton" style="height:40px;margin-bottom:0.4rem;"></div>
+          <div class="skeleton" style="height:40px;"></div>
+        </div>
+      </div>
+
+      <!-- Suggested People Widget -->
+      <div class="glass-card widget-card">
+        <div class="widget-title">
+          <span><i class="bi bi-person-plus-fill" style="color:var(--accent-primary);margin-right:0.4rem;"></i> Suggested People</span>
+        </div>
+        <div id="suggested-users-widget">
+          <div class="skeleton" style="height:45px;margin-bottom:0.4rem;"></div>
+          <div class="skeleton" style="height:45px;"></div>
+        </div>
+      </div>
+
+      <!-- Top Communities Widget -->
+      <div class="glass-card widget-card">
+        <div class="widget-title">
+          <span><i class="bi bi-fire" style="color:#f59e0b;margin-right:0.4rem;"></i> Top Communities</span>
+          <a href="/search.html" style="font-size:0.8rem;color:var(--accent-primary);font-weight:600;">View All</a>
+        </div>
+        <div id="top-communities-widget">
+          <div class="skeleton" style="height:45px;margin-bottom:0.4rem;"></div>
+          <div class="skeleton" style="height:45px;"></div>
+        </div>
+      </div>
+
+      <!-- Footer Info -->
+      <div style="font-size:0.75rem; color:var(--text-muted); line-height:1.6; padding:0 0.5rem;">
+        ConnectHub © 2026 • Modern Community Platform.<br />
+        Built with vanilla JavaScript & Express.
+      </div>
+    </aside>
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="/index.html" class="mobile-nav-item active">
+      <i class="bi bi-house-door-fill"></i>
+      <span>Feed</span>
+    </a>
+    <a href="/search.html" class="mobile-nav-item">
+      <i class="bi bi-compass"></i>
+      <span>Explore</span>
+    </a>
+    <a href="#" class="mobile-nav-item open-create-post-trigger" style="color:var(--accent-primary);">
+      <i class="bi bi-plus-circle-fill" style="font-size:1.6rem;"></i>
+      <span>Post</span>
+    </a>
+    <a href="/notifications.html" class="mobile-nav-item">
+      <i class="bi bi-bell"></i>
+      <span>Alerts</span>
+    </a>
+    <a href="/profile.html" class="mobile-nav-item current-user-profile-link">
+      <i class="bi bi-person"></i>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <!-- =========================================================
+       MODALS
+       ========================================================= -->
+
+  <!-- 1. Create Post Modal with Live Preview -->
+  <div class="modal-overlay" id="create-post-modal">
+    <div class="modal-content" style="max-width: 680px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Create a Post</h3>
+        <button class="modal-close"><i class="bi bi-x"></i></button>
+      </div>
+      
+      <div class="modal-body">
+        <!-- Post Type Switcher -->
+        <div style="display:flex; gap:0.5rem; margin-bottom:1.25rem;">
+          <button class="tab-btn post-type-tab active" data-type="text">
+            <i class="bi bi-chat-left-text"></i> Text
+          </button>
+          <button class="tab-btn post-type-tab" data-type="image">
+            <i class="bi bi-image"></i> Image
+          </button>
+          <button class="tab-btn post-type-tab" data-type="link">
+            <i class="bi bi-link-45deg"></i> Link
+          </button>
+        </div>
+
+        <form id="create-post-form">
+          <!-- Community Picker Dropdown -->
+          <div class="form-group">
+            <label class="form-label">Post to Community (Optional)</label>
+            <select class="form-control" id="post-community-select">
+              <option value="">Public Feed (No Community)</option>
+            </select>
+          </div>
+
+          <!-- Post Title -->
+          <div class="form-group">
+            <label class="form-label">Title *</label>
+            <input type="text" class="form-control" id="post-title-input" placeholder="An engaging and descriptive title..." required maxlength="300" />
+          </div>
+
+          <!-- Post Body Content -->
+          <div class="form-group">
+            <label class="form-label">Content / Description</label>
+            <textarea class="form-control" id="post-content-input" placeholder="Share more details, markdown code blocks, or thoughts..."></textarea>
+          </div>
+
+          <!-- Image Upload & URL (Conditional) -->
+          <div id="image-post-fields" style="display:none;">
+            <div class="form-group">
+              <label class="form-label">Upload Image or Enter Image URL</label>
+              <div style="display:flex; gap:0.5rem; margin-bottom:0.4rem;">
+                <input type="file" id="post-image-file" accept="image/*" class="form-control" style="padding:0.45rem;" />
+              </div>
+              <span id="image-upload-status" style="font-size:0.8rem; color:var(--accent-secondary);"></span>
+              <input type="url" class="form-control" id="post-media-url" placeholder="Or paste image URL (https://...)" style="margin-top:0.4rem;" />
+            </div>
+          </div>
+
+          <!-- Link URL (Conditional) -->
+          <div id="link-post-fields" style="display:none;">
+            <div class="form-group">
+              <label class="form-label">External Web Link URL *</label>
+              <input type="url" class="form-control" id="post-link-url" placeholder="https://example.com/article" />
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div class="form-group">
+            <label class="form-label">Tags (comma separated)</label>
+            <input type="text" class="form-control" id="post-tags-input" placeholder="e.g. JavaScript, AI, Design" />
+          </div>
+
+          <!-- Live Preview Box Header -->
+          <div style="font-size:0.85rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-top:1.5rem; margin-bottom:0.6rem;">
+            Live Post Preview
+          </div>
+          <div id="post-live-preview-box" style="margin-bottom:1.5rem;"></div>
+
+          <div class="modal-footer" style="padding:0; padding-top:1rem;">
+            <button type="button" class="btn btn-secondary btn-close-modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-send-fill"></i> Publish Post
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Auth Modal (Login / Register / Demo) -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-content" style="max-width: 480px;">
+      <div class="modal-header">
+        <div class="tabs-nav" style="border-bottom:none; padding:0;">
+          <button class="tab-btn active" id="tab-auth-login" onclick="switchAuthTab('login')">Log In</button>
+          <button class="tab-btn" id="tab-auth-register" onclick="switchAuthTab('register')">Register</button>
+        </div>
+        <button class="modal-close"><i class="bi bi-x"></i></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Quick Demo Login Switcher -->
+        <div style="background:var(--bg-input); padding:0.9rem; border-radius:var(--radius-md); margin-bottom:1.25rem; border:1px solid var(--border-color);">
+          <div style="font-size:0.82rem; font-weight:700; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase;">
+            ⚡ Instant Demo Login (1-Click)
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.4rem;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="quickDemoLogin('alex@connecthub.com')">
+              Alex Kumar
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="quickDemoLogin('priya@connecthub.com')">
+              Priya Sharma
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="quickDemoLogin('rahul@connecthub.com')">
+              Rahul Dev
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="quickDemoLogin('sarah@connecthub.com')">
+              Sarah Thomas
+            </button>
+          </div>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form-container">
+          <form id="login-form">
+            <div class="form-group">
+              <label class="form-label">Email or Username</label>
+              <input type="text" name="emailOrUsername" class="form-control" placeholder="alex@connecthub.com or alexkumar" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" placeholder="••••••••" required />
+            </div>
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1rem;">
+              <a href="#" onclick="switchAuthTab('forgot'); return false;" style="font-size:0.85rem; color:var(--accent-primary);">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Log In</button>
+          </form>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-form-container" style="display:none;">
+          <form id="register-form">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" name="fullName" class="form-control" placeholder="e.g. Maya Lin" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Username *</label>
+              <input type="text" name="username" class="form-control" placeholder="e.g. mayalin" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input type="email" name="email" class="form-control" placeholder="maya@example.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password *</label>
+              <input type="password" name="password" class="form-control" placeholder="Minimum 6 characters" minlength="6" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Bio (Optional)</label>
+              <input type="text" name="bio" class="form-control" placeholder="A short description about yourself" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:0.5rem;">Create Account</button>
+          </form>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgot-form-container" style="display:none;">
+          <form id="forgot-form">
+            <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:1rem;">
+              Enter your email address to receive password reset instructions.
+            </p>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" name="email" class="form-control" placeholder="your@email.com" required />
+            </div>
+            <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+              <button type="button" class="btn btn-secondary" onclick="switchAuthTab('login')">Back to Login</button>
+              <button type="submit" class="btn btn-primary" style="flex:1;">Send Reset Link</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Create Community Modal -->
+  <div class="modal-overlay" id="create-community-modal">
+    <div class="modal-content" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Create a Community</h3>
+        <button class="modal-close"><i class="bi bi-x"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="create-community-form">
+          <div class="form-group">
+            <label class="form-label">Community Name *</label>
+            <input type="text" class="form-control" id="comm-name-input" placeholder="e.g. WebDevelopment" required maxlength="40" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select class="form-control" id="comm-category-select">
+              <option value="Tech">Technology & Code</option>
+              <option value="Gaming">Gaming & Esports</option>
+              <option value="Cinema">Movies & Cinema</option>
+              <option value="Education">Education & Learning</option>
+              <option value="Life">College & Student Life</option>
+              <option value="Humor">Memes & Humor</option>
+              <option value="Fitness">Sports & Fitness</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" id="comm-desc-input" placeholder="What is this community about? Who should join?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Icon Image URL (Optional)</label>
+            <input type="url" class="form-control" id="comm-icon-input" placeholder="https://..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Banner Image URL (Optional)</label>
+            <input type="url" class="form-control" id="comm-banner-input" placeholder="https://..." />
+          </div>
+          <div class="modal-footer" style="padding:0; padding-top:1rem;">
+            <button type="button" class="btn btn-secondary btn-close-modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Create Community</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/components.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

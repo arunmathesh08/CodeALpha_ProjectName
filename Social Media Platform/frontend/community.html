@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community - ConnectHub</title>
+  <meta name="description" content="Explore and participate in vibrant communities on ConnectHub." />
+
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="navbar">
+    <a href="/index.html" class="navbar-brand">
+      <div class="navbar-logo-icon"><i class="bi bi-intersect"></i></div>
+      Connect<span class="highlight">Hub</span>
+    </a>
+
+    <!-- Global Search -->
+    <div class="nav-search-container">
+      <i class="bi bi-search nav-search-icon"></i>
+      <input type="text" class="nav-search-input" id="nav-search-input" placeholder="Search ConnectHub..." autocomplete="off" />
+      <div class="search-results-dropdown" id="nav-search-dropdown"></div>
+    </div>
+
+    <!-- Actions -->
+    <div class="navbar-actions">
+      <button class="nav-icon-btn theme-toggle-btn" title="Toggle Light/Dark Theme">
+        <i class="bi bi-sun-fill"></i>
+      </button>
+      <a href="/notifications.html" class="nav-icon-btn auth-user-only" title="Notifications" style="text-decoration:none;">
+        <i class="bi bi-bell"></i>
+        <span class="nav-badge-count notification-unread-badge" style="display:none;">0</span>
+      </a>
+      <div class="auth-guest-only">
+        <button class="btn btn-secondary btn-sm" onclick="openAuthModal('login')">
+          <i class="bi bi-box-arrow-in-right"></i> Log In
+        </button>
+      </div>
+      <div class="nav-user-menu auth-user-only" style="display:none;">
+        <button class="nav-user-btn" id="nav-user-menu-btn">
+          <img src="https://api.dicebear.com/7.x/bottts/svg?seed=user" alt="User" class="avatar-img current-user-avatar" />
+          <i class="bi bi-chevron-down" style="font-size:0.75rem; color:var(--text-muted);"></i>
+        </button>
+        <div class="nav-dropdown" id="nav-user-dropdown">
+          <a href="/profile.html" class="dropdown-item current-user-profile-link">
+            <i class="bi bi-person"></i> My Profile
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item logout-btn" style="color:#ef4444;">
+            <i class="bi bi-box-arrow-right"></i> Log Out
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3-Column Layout Container -->
+  <main class="app-container">
+    <!-- Left Navigation Sidebar -->
+    <aside class="left-sidebar">
+      <nav class="nav-menu-list">
+        <a href="/index.html" class="nav-menu-item">
+          <i class="bi bi-house-door-fill"></i> Home Feed
+        </a>
+        <a href="/search.html" class="nav-menu-item active">
+          <i class="bi bi-compass-fill"></i> Explore Communities
+        </a>
+        <a href="/notifications.html" class="nav-menu-item auth-user-only">
+          <i class="bi bi-bell-fill"></i> Notifications
+        </a>
+        <a href="/profile.html" class="nav-menu-item current-user-profile-link auth-user-only">
+          <i class="bi bi-person-circle"></i> My Profile
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Center Community Main Content -->
+    <section class="main-content">
+      <!-- Community Header Box -->
+      <div id="community-header-container">
+        <div class="glass-card skeleton" style="height: 240px;"></div>
+      </div>
+
+      <!-- Community Tabs -->
+      <nav class="tabs-nav">
+        <button class="tab-btn community-tab-btn active" data-tab="posts">
+          <i class="bi bi-chat-left-text"></i> Discussions
+        </button>
+        <button class="tab-btn community-tab-btn" data-tab="popular">
+          <i class="bi bi-fire"></i> Popular
+        </button>
+        <button class="tab-btn community-tab-btn" data-tab="new">
+          <i class="bi bi-clock"></i> New
+        </button>
+        <button class="tab-btn community-tab-btn" data-tab="top">
+          <i class="bi bi-trophy"></i> Top Voted
+        </button>
+        <button class="tab-btn community-tab-btn" data-tab="about">
+          <i class="bi bi-info-circle"></i> About Community
+        </button>
+      </nav>
+
+      <!-- Community Tab Content Feed -->
+      <div id="community-tab-content" style="display:flex; flex-direction:column; gap:1.25rem;">
+        <div class="glass-card skeleton" style="height: 180px;"></div>
+      </div>
+    </section>
+
+    <!-- Right Sidebar Community Info & Rules -->
+    <aside class="right-sidebar">
+      <!-- Community Rules Widget -->
+      <div class="glass-card widget-card">
+        <div class="widget-title">
+          <span><i class="bi bi-shield-check" style="color:var(--accent-secondary);margin-right:0.4rem;"></i> Community Rules</span>
+        </div>
+        <div id="community-rules-container">
+          <div class="skeleton" style="height:50px;margin-bottom:0.4rem;"></div>
+          <div class="skeleton" style="height:50px;"></div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <a href="/index.html" class="mobile-nav-item">
+      <i class="bi bi-house-door"></i>
+      <span>Feed</span>
+    </a>
+    <a href="/search.html" class="mobile-nav-item active">
+      <i class="bi bi-compass-fill"></i>
+      <span>Explore</span>
+    </a>
+    <a href="/notifications.html" class="mobile-nav-item">
+      <i class="bi bi-bell"></i>
+      <span>Alerts</span>
+    </a>
+    <a href="/profile.html" class="mobile-nav-item current-user-profile-link">
+      <i class="bi bi-person"></i>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/components.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/community.js"></script>
+</body>
+</html>

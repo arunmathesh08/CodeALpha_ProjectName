@@ -1,0 +1,726 @@
+/* =========================================================
+   ConnectHub Components Design
+   ========================================================= */
+
+/* Create Post Quick Box */
+.create-post-box {
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.create-post-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.create-post-trigger-input {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.65rem 1.2rem;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.create-post-trigger-input:hover {
+  border-color: var(--text-muted);
+  background: var(--bg-glass-hover);
+  color: var(--text-secondary);
+}
+
+.create-post-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.75rem;
+}
+
+.create-post-type-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.create-post-type-btn:hover {
+  background: var(--bg-glass-hover);
+  color: var(--text-primary);
+}
+
+.create-post-type-btn.photo i { color: #10b981; }
+.create-post-type-btn.link i { color: #3b82f6; }
+.create-post-type-btn.text i { color: #f59e0b; }
+
+/* =========================================================
+   Post Card Component
+   ========================================================= */
+.post-card {
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  position: relative;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.post-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Post Header */
+.post-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.post-meta-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.post-author-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.post-author-line {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.post-author-username {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.post-community-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: var(--bg-glass-hover);
+  color: var(--accent-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+}
+
+.post-time {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.post-more-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: var(--radius-full);
+  font-size: 1.1rem;
+}
+.post-more-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-glass-hover);
+}
+
+/* Post Content */
+.post-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.post-text-content {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.post-media-container {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-height: 520px;
+  background: var(--bg-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+}
+
+.post-media-container img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+}
+
+/* Post Link Card */
+.post-link-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.post-link-card:hover {
+  border-color: var(--accent-primary);
+  background: var(--bg-glass-hover);
+}
+
+.post-link-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: var(--accent-glow);
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.post-link-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  overflow: hidden;
+}
+
+.post-link-url {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.post-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.post-tag {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent-secondary);
+  background: rgba(6, 182, 212, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+.post-tag:hover {
+  background: rgba(6, 182, 212, 0.2);
+}
+
+/* Post Footer & Interactive Action Bars */
+.post-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.post-actions-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Reddit-Style Voting Widget */
+.vote-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.vote-btn {
+  background: transparent;
+  border: none;
+  padding: 0.4rem 0.65rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.vote-btn:hover {
+  color: var(--text-primary);
+}
+
+.vote-score {
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0 0.35rem;
+  color: var(--text-secondary);
+  min-width: 24px;
+  text-align: center;
+}
+
+.vote-btn.upvote.active {
+  color: var(--upvote);
+  background: var(--upvote-bg);
+}
+.vote-pill.upvoted .vote-score {
+  color: var(--upvote);
+}
+
+.vote-btn.downvote.active {
+  color: var(--downvote);
+  background: var(--downvote-bg);
+}
+.vote-pill.downvoted .vote-score {
+  color: var(--downvote);
+}
+
+/* Action Buttons (Like, Comment, Share, Save) */
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 0.85rem;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.action-btn:hover {
+  background: var(--bg-glass-hover);
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+.action-btn.like-btn.liked {
+  color: var(--like);
+  background: var(--like-bg);
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.action-btn.save-btn.saved {
+  color: var(--accent-primary);
+  background: var(--accent-glow);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* =========================================================
+   Threaded Comments Section
+   ========================================================= */
+.comments-section {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.25rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.comment-input-box {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.comment-textarea-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment-textarea {
+  min-height: 70px;
+  font-size: 0.9rem;
+}
+
+/* Threaded Comment Item */
+.comment-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.comment-item.has-parent {
+  margin-left: 1.5rem;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--border-color);
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.comment-author-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.comment-author-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.comment-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.comment-body {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.comment-action-link {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.comment-action-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-glass-hover);
+}
+
+.comment-action-link.liked {
+  color: var(--like);
+}
+
+.comment-action-link.delete-link:hover {
+  color: #ef4444;
+}
+
+.nested-replies-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.reply-input-container {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent-primary);
+}
+
+/* =========================================================
+   Profile Page Elements
+   ========================================================= */
+.profile-card {
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.profile-cover {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #1e1b4b 0%, #064e3b 100%);
+}
+
+.profile-details-wrap {
+  padding: 0 1.75rem 1.5rem;
+  position: relative;
+}
+
+.profile-avatar-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: -48px;
+  margin-bottom: 1rem;
+}
+
+.profile-avatar-img {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-full);
+  border: 4px solid var(--bg-secondary);
+  object-fit: cover;
+  background: var(--bg-secondary);
+}
+
+.profile-names {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.profile-fullname {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.profile-username {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.profile-bio {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+  max-width: 650px;
+}
+
+.profile-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.profile-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.profile-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.1rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.profile-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.profile-stat-count {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* =========================================================
+   Community Header Component
+   ========================================================= */
+.community-banner-card {
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.community-banner-img {
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.community-header-body {
+  padding: 0 1.5rem 1.25rem;
+  position: relative;
+}
+
+.community-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: -36px;
+  margin-bottom: 0.75rem;
+}
+
+.community-header-icon {
+  width: 76px;
+  height: 76px;
+  border-radius: var(--radius-lg);
+  border: 4px solid var(--bg-secondary);
+  object-fit: cover;
+  background: var(--bg-secondary);
+}
+
+.community-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.community-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.community-stats {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Community Rules Widget */
+.rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rule-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.rule-item:last-child {
+  border-bottom: none;
+}
+
+.rule-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.rule-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* User Card Widget */
+.user-card-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.user-card-info {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  overflow: hidden;
+}
+
+.user-card-names {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  line-height: 1.25;
+}
+
+.user-card-fullname {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.user-card-username {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Trending Topic Item */
+.trending-topic-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.trending-topic-item:last-child {
+  border-bottom: none;
+}
+.trending-topic-item:hover .topic-name {
+  color: var(--accent-primary);
+}
+
+.topic-tag {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.topic-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+
+.topic-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
