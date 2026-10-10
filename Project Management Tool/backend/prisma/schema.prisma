@@ -1,0 +1,133 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String          @id @default(uuid())
+  email          String          @unique
+  password       String
+  name           String
+  gender         String?         @default("MALE")
+  avatar         String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  
+  ownedProjects  Project[]       @relation("ProjectOwner")
+  memberships    ProjectMember[]
+  createdTasks   Task[]          @relation("TaskCreator")
+  assignedTasks  Task[]          @relation("TaskAssignee")
+  comments       Comment[]
+  notifications  Notification[]
+  activities     Activity[]
+}
+
+model Project {
+  id          String          @id @default(uuid())
+  name        String
+  description String?
+  status      String          @default("ACTIVE") // ACTIVE, COMPLETED, ON_HOLD, ARCHIVED
+  ownerId     String
+  owner       User            @relation("ProjectOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  members     ProjectMember[]
+  boards      Board[]
+  tasks       Task[]
+  activities  Activity[]
+}
+
+model ProjectMember {
+  id        String   @id @default(uuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      String   @default("MEMBER") // OWNER, ADMIN, MEMBER
+  joinedAt  DateTime @default(now())
+
+  @@unique([projectId, userId])
+}
+
+model Board {
+  id        String    @id @default(uuid())
+  name      String    @default("Main Board")
+  projectId String
+  project   Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  columns   Column[]
+}
+
+model Column {
+  id        String   @id @default(uuid())
+  name      String   // "To Do", "In Progress", "Review", "Completed"
+  order     Int      @default(0)
+  boardId   String
+  board     Board    @relation(fields: [boardId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tasks     Task[]
+}
+
+model Task {
+  id          String     @id @default(uuid())
+  title       String
+  description String?
+  priority    String     @default("MEDIUM") // LOW, MEDIUM, HIGH, URGENT
+  order       Int        @default(0)
+  dueDate     DateTime?
+  columnId    String
+  column      Column     @relation(fields: [columnId], references: [id], onDelete: Cascade)
+  projectId   String
+  project     Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  creatorId   String
+  creator     User       @relation("TaskCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  assigneeId  String?
+  assignee    User?      @relation("TaskAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  comments    Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  taskId    String
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      String   // TASK_ASSIGNED, TASK_UPDATED, COMMENT_ADDED, MEMBER_ADDED
+  link      String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Activity {
+  id        String   @id @default(uuid())
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action    String   // CREATED_PROJECT, CREATED_TASK, MOVED_TASK, UPDATED_TASK, ADDED_COMMENT, ADDED_MEMBER
+  details   String?
+  createdAt DateTime @default(now())
+}

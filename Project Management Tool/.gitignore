@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# SQLite Databases & Logs
+*.db
+*.db-journal
+*.sqlite
+*.sqlite-journal
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
